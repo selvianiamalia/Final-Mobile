@@ -3,13 +3,25 @@ package com.example.h071211003_finalproject.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.h071211003_finalproject.Models.TvShows;
 import com.example.h071211003_finalproject.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AdapterTVShows extends RecyclerView.Adapter<AdapterTVShows.ViewHolder> {
+    private final ArrayList<TvShows> tvShows = new ArrayList<>();
+
+    public void addTvShows (List<TvShows> tvShows){
+        this.tvShows.addAll(tvShows);
+    }
     @NonNull
     @Override
     public AdapterTVShows.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -20,17 +32,27 @@ public class AdapterTVShows extends RecyclerView.Adapter<AdapterTVShows.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull AdapterTVShows.ViewHolder holder, int position) {
-
+        TvShows tvshow = tvShows.get(position);
+        holder.tv_title.setText(tvshow.getName());
+        holder.tv_year.setText(tvshow.getAir_date());
+        Glide.with(holder.itemView.getContext()).load(tvshow.getPoster_path()).into(holder.iv_poster);
+        Glide.with(holder.itemView.getContext()).load("https://image.tmdb.org/t/p/w500" + tvshow.getPoster_path()).into(holder.iv_poster);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return tvShows.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView iv_poster;
+        TextView tv_title, tv_year;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            iv_poster = itemView.findViewById(R.id.iv_filmposter);
+            tv_title = itemView.findViewById(R.id.tv_title2);
+            tv_year = itemView.findViewById(R.id.tv_yearRelease);
+
         }
     }
 }
