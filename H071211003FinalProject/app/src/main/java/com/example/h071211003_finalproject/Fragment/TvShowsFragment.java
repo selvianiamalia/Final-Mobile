@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.h071211003_finalproject.APIConfig;
+import com.example.h071211003_finalproject.API.APIConfig;
 import com.example.h071211003_finalproject.Adapter.AdapterTVShows;
 import com.example.h071211003_finalproject.R;
 import com.example.h071211003_finalproject.TvShowsResponse;

@@ -11,9 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.h071211003_finalproject.MainActivity;
+import com.example.h071211003_finalproject.Activity.MainActivity2;
 import com.example.h071211003_finalproject.Models.Movies;
-import com.example.h071211003_finalproject.Models.TvShows;
 import com.example.h071211003_finalproject.R;
 
 import java.util.ArrayList;
@@ -64,8 +63,8 @@ public class AdapterMovies extends RecyclerView.Adapter<AdapterMovies.ViewHolder
             System.out.println();
 
             itemView.setOnClickListener(view -> {
-                Intent intent = new Intent(itemView.getContext(), MainActivity.class);
-                intent.putExtra("moviess", (CharSequence) movies);
+                Intent intent = new Intent(itemView.getContext(), MainActivity2.class);
+                intent.putExtra("moviess", movies);
                 itemView.getContext().startActivity(intent);
             });
         }

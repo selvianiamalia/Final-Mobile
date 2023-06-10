@@ -1,5 +1,6 @@
 package com.example.h071211003_finalproject.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.h071211003_finalproject.Activity.MainActivity2;
 import com.example.h071211003_finalproject.Models.TvShows;
 import com.example.h071211003_finalproject.R;
 
@@ -37,6 +39,12 @@ public class AdapterTVShows extends RecyclerView.Adapter<AdapterTVShows.ViewHold
         holder.tv_year.setText(tvshow.getAir_date());
         Glide.with(holder.itemView.getContext()).load(tvshow.getPoster_path()).into(holder.iv_poster);
         Glide.with(holder.itemView.getContext()).load("https://image.tmdb.org/t/p/w500" + tvshow.getPoster_path()).into(holder.iv_poster);
+
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(holder.itemView.getContext(), MainActivity2.class);
+            intent.putExtra("tvshowss", tvshow);
+            holder.itemView.getContext().startActivity(intent);
+        });
     }
 
     @Override

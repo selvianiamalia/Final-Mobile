@@ -6,18 +6,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.example.h071211003_finalproject.APIConfig;
+import com.example.h071211003_finalproject.API.APIConfig;
 import com.example.h071211003_finalproject.Adapter.AdapterMovies;
-import com.example.h071211003_finalproject.MainActivity;
 import com.example.h071211003_finalproject.MoviesResponse;
 import com.example.h071211003_finalproject.R;
 
