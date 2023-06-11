@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import com.example.h071211003_finalproject.API.APIConfig;
 import com.example.h071211003_finalproject.Adapter.AdapterTVShows;
 import com.example.h071211003_finalproject.R;
-import com.example.h071211003_finalproject.TvShowsResponse;
+import com.example.h071211003_finalproject.API.TvShowsResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;

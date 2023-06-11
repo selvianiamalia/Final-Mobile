@@ -36,8 +36,11 @@ public class AdapterTVShows extends RecyclerView.Adapter<AdapterTVShows.ViewHold
     public void onBindViewHolder(@NonNull AdapterTVShows.ViewHolder holder, int position) {
         TvShows tvshow = tvShows.get(position);
         holder.tv_title.setText(tvshow.getName());
-        holder.tv_year.setText(tvshow.getAir_date());
-        Glide.with(holder.itemView.getContext()).load(tvshow.getPoster_path()).into(holder.iv_poster);
+        String tahun = tvshow.getAir_date();
+        if(tahun != null && !tahun.isEmpty()){
+            String tahunn = tahun.substring(0, 4);
+            holder.tv_year.setText(tahunn);
+        }
         Glide.with(holder.itemView.getContext()).load("https://image.tmdb.org/t/p/w500" + tvshow.getPoster_path()).into(holder.iv_poster);
 
         holder.itemView.setOnClickListener(view -> {

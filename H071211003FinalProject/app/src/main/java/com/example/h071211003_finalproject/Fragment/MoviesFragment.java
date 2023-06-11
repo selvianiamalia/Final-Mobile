@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.example.h071211003_finalproject.API.APIConfig;
 import com.example.h071211003_finalproject.Adapter.AdapterMovies;
-import com.example.h071211003_finalproject.MoviesResponse;
+import com.example.h071211003_finalproject.API.MoviesResponse;
 import com.example.h071211003_finalproject.R;
 
 import retrofit2.Call;

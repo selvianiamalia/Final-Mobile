@@ -58,7 +58,6 @@ public class AdapterMovies extends RecyclerView.Adapter<AdapterMovies.ViewHolder
                 String tahunn = tahun.substring(0, 4);
                 tv_year.setText(tahunn);
             }
-//            tv_year.setText(movies.getReleaseDate());
             Glide.with(itemView.getContext()).load("https://image.tmdb.org/t/p/w500" + movies.getImagePoster()).into(iv_poster);
             System.out.println();
 
