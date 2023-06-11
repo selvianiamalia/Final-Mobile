@@ -14,6 +14,7 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.h071211003_finalproject.Adapter.AdapterFavorites;
@@ -29,6 +30,7 @@ import java.util.concurrent.Executors;
 public class FavoriteFragment extends Fragment {
     private RecyclerView rv_fav;
     AdapterFavorites adapter_fav;
+    private ProgressBar progressBar1;
     ArrayList<Favorites> myFav = new ArrayList<>();
 
 
@@ -73,10 +75,13 @@ public class FavoriteFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        progressBar1 = view.findViewById(R.id.progressBar1);
         rv_fav = view.findViewById(R.id.rv_favorite);
         rv_fav.setHasFixedSize(true);
         rv_fav.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter_fav = new AdapterFavorites();
+
+
 
         new LoadStudentsAsync(this, favs -> {
             if (favs.size() > 0){

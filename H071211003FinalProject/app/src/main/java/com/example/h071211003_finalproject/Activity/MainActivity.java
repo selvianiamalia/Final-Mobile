@@ -1,15 +1,27 @@
-package com.example.h071211003_finalproject;
+package com.example.h071211003_finalproject.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
+import com.example.h071211003_finalproject.Database.FavoriteHelper;
 import com.example.h071211003_finalproject.Fragment.FavoriteFragment;
 import com.example.h071211003_finalproject.Fragment.MoviesFragment;
 import com.example.h071211003_finalproject.Fragment.TvShowsFragment;
+import com.example.h071211003_finalproject.Models.Favorites;
+import com.example.h071211003_finalproject.R;
+
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 

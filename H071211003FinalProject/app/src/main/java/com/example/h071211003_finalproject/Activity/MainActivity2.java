@@ -22,15 +22,16 @@ import com.example.h071211003_finalproject.R;
 public class MainActivity2 extends AppCompatActivity {
     public static final String EXTRA_FAV = "extra_fav";
     public static final int RESULT_ADD = 101;
-    public static final int RESULT_DELETE = 301;
     private FavoriteHelper favoriteHelper;
     private Favorites favorites;
+    private Movies moviess;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
         TextView tv_title = findViewById(R.id.tv_title);
         TextView tv_rate = findViewById(R.id.tv_rating);
         TextView tv_synopsis = findViewById(R.id.tv_description);
@@ -68,22 +69,19 @@ public class MainActivity2 extends AppCompatActivity {
                 values.put(DatabaseContract.FavoriteColumn.TITLE, moviess.getTitle());
                 values.put(DatabaseContract.FavoriteColumn.YEAR_RELEASE, moviess.getReleaseDate());
                 values.put(DatabaseContract.FavoriteColumn._ID, moviess.getId());
+                values.put(DatabaseContract.FavoriteColumn.RATING, moviess.getVote_average());
+                values.put(DatabaseContract.FavoriteColumn.SYNOPSIS, moviess.getOverview());
+                values.put(DatabaseContract.FavoriteColumn.BACK_DROP, moviess.getBackdrop_path());
+
                 Toast.makeText(MainActivity2.this, "Berhasil menambahkan ke Favorite", Toast.LENGTH_SHORT).show();
 
                 long result = favoriteHelper.insert(values);
-                long result2 = favoriteHelper.deleteById(String.valueOf(favorites.getId()));
+//                long result2 = favoriteHelper.deleteById(String.valueOf(favorites.getId()));
                 if (result > 0){
-                    setResult(RESULT_ADD, intent);
-                    finish();
-                    startActivity(intent);
-                    System.out.println("ini movie");
-                }
-                else if (result2 > 0) {
-                    Intent delete = new Intent(MainActivity2.this, MainActivity.class);
-                    setResult(RESULT_DELETE, delete);
-                    finish();
-                    startActivity(delete);
-                    System.out.println("ini hapus");
+                    Toast.makeText(MainActivity2.this, "Berhasil menambahkan ke Favorite", Toast.LENGTH_SHORT).show();
+                }else {
+                    favoriteHelper.deleteByTitle(moviess.getTitle());
+                    Toast.makeText(MainActivity2.this, "Berhasil menghapus ke Favorite", Toast.LENGTH_SHORT).show();
                 }
             });
         } else if (intent.getParcelableExtra("tvshowss") !=null) {
@@ -106,25 +104,53 @@ public class MainActivity2 extends AppCompatActivity {
                 values.put(DatabaseContract.FavoriteColumn.TITLE, tvShows.getName());
                 values.put(DatabaseContract.FavoriteColumn.YEAR_RELEASE, tvShows.getAir_date());
                 values.put(DatabaseContract.FavoriteColumn._ID, tvShows.getId());
+                values.put(DatabaseContract.FavoriteColumn.RATING, tvShows.getVote_average());
+                values.put(DatabaseContract.FavoriteColumn.SYNOPSIS, tvShows.getOverview());
+                values.put(DatabaseContract.FavoriteColumn.BACK_DROP, tvShows.getBackdrop_path());
                 Toast.makeText(MainActivity2.this, "Berhasil menambahkan ke Favorite", Toast.LENGTH_SHORT).show();
 
                 long result = favoriteHelper.insert(values);
                 if (result > 0){
-                    setResult(RESULT_ADD, intent);
-                    finish();
-                    startActivity(intent);
-                    System.out.println("tvshow ini");
+                    Toast.makeText(MainActivity2.this, "Berhasil menambahkan ke Favorite", Toast.LENGTH_SHORT).show();
+                } else {
+                    favoriteHelper.deleteByTitle(tvShows.getName());
+                    Toast.makeText(MainActivity2.this, "Berhasil menghapus dari Favorite", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Favorites favorites1 = intent.getParcelableExtra("favs");
+            tv_title.setText(favorites1.getTitle());
+            tv_releaseDate.setText(favorites1.getReleaseDate());
+            tv_rate.setText(favorites1.getVote_average());
+            tv_synopsis.setText(favorites1.getOverview());
+            Glide.with(this).load("https://image.tmdb.org/t/p/w500" + favorites1.getImagePoster()).into(iv_poster);
+            Glide.with(this).load("https://image.tmdb.org/t/p/w500" + favorites1.getBackdrop_path()).into(iv_backposter);
+
+            cv_fav.setOnClickListener(view -> {
+                Intent fav = new Intent();
+                fav.putExtra(EXTRA_FAV, favorites);
+                ContentValues values = new ContentValues();
+                values.put(DatabaseContract.FavoriteColumn.POSTER_IMAGE, favorites1.getImagePoster());
+                values.put(DatabaseContract.FavoriteColumn.TITLE, favorites1.getTitle());
+                values.put(DatabaseContract.FavoriteColumn.YEAR_RELEASE, favorites1.getReleaseDate());
+                values.put(DatabaseContract.FavoriteColumn._ID, favorites1.getId());
+                values.put(DatabaseContract.FavoriteColumn.RATING, favorites1.getVote_average());
+                values.put(DatabaseContract.FavoriteColumn.SYNOPSIS, favorites1.getOverview());
+                values.put(DatabaseContract.FavoriteColumn.BACK_DROP, favorites1.getBackdrop_path());
+
+                long result = favoriteHelper.insert(values);
+                if (result > 0){
+                    Toast.makeText(MainActivity2.this, "Berhasil menambahkan ke Favorite", Toast.LENGTH_SHORT).show();
+                } else {
+                    favoriteHelper.deleteByTitle(favorites1.getTitle());
+                    Toast.makeText(MainActivity2.this, "Berhasil menghapus dari Favorite", Toast.LENGTH_SHORT).show();
                 }
             });
         }
 
         cv_back.setOnClickListener(view -> {
-            Intent back = new Intent(MainActivity2.this, MainActivity.class);
-            startActivity(back);
-            finish();
+            onBackPressed();
         });
-
-
 
         }
 }

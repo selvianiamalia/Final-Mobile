@@ -1,7 +1,4 @@
-package com.example.h071211003_finalproject;
-
-import com.example.h071211003_finalproject.Models.Movies;
-import com.example.h071211003_finalproject.Models.TvShows;
+package com.example.h071211003_finalproject.API;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

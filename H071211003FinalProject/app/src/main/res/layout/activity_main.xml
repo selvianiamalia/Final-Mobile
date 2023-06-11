@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <FrameLayout
         android:id="@+id/frame_main"
@@ -13,7 +13,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_below="@id/frame_main"
@@ -42,7 +42,6 @@
                 android:text="Tv Shows" />
 
         </LinearLayout>
-
 
         <LinearLayout
             android:id="@+id/ll_movies"

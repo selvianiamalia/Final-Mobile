@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.example.h071211003_finalproject.API.APIConfig;
 import com.example.h071211003_finalproject.Adapter.AdapterTVShows;
@@ -26,6 +27,7 @@ public class TvShowsFragment extends Fragment {
 
     private RecyclerView rv_tv;
     AdapterTVShows adapterTVShows;
+    private ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,8 @@ public class TvShowsFragment extends Fragment {
         rv_tv = view.findViewById(R.id.rv_tvShows);
         rv_tv.setHasFixedSize(true);
         adapterTVShows = new AdapterTVShows();
+        progressBar = view.findViewById(R.id.progressBar3);
+        progressBar.setVisibility(View.VISIBLE);
 
         APIConfig.getApiService().getTvShows(APIConfig.getApiKey()).enqueue(new Callback<TvShowsResponse>() {
             @Override
@@ -53,6 +57,7 @@ public class TvShowsFragment extends Fragment {
                     adapterTVShows.addTvShows(response.body().getTvShows());
                     rv_tv.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                     rv_tv.setAdapter(adapterTVShows);
+                    progressBar.setVisibility(View.GONE);
                     Log.d("movies", response.body().toString());
                 }
             }

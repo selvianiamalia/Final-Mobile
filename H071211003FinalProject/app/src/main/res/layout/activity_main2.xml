@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity2">
+    tools:context=".Activity.MainActivity2">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cv_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="50dp"
@@ -23,6 +24,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cv_fav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="50dp"
@@ -40,7 +42,7 @@
 
 
     <ImageView
-        android:id="@+id/backpdrop"
+        android:id="@+id/backdrop"
         android:layout_width="match_parent"
         android:layout_height="212dp"
         android:scaleType="centerCrop"

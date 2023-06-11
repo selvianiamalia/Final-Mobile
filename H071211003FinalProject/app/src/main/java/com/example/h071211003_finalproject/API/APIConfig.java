@@ -1,4 +1,4 @@
-package com.example.h071211003_finalproject;
+package com.example.h071211003_finalproject.API;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

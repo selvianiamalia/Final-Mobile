@@ -34,7 +34,7 @@
                 android:text="@string/moviename" />
 
             <TextView
-                android:id="@+id/dateRelease"
+                android:id="@+id/yearRelease"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_title2"
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@id/dateRelease"
+                android:layout_below="@id/yearRelease"
                 android:layout_marginEnd="20dp"
                 android:src="@drawable/baseline_movie_24"/>
 

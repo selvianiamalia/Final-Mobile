@@ -7,6 +7,14 @@
     android:background="@color/light"
     android:orientation="vertical">
 
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+
     <LinearLayout
         android:id="@+id/ll_favBar"
         android:layout_width="match_parent"
@@ -24,13 +32,6 @@
             android:layout_marginLeft="20dp"/>
 
     </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_centerInParent="true"
-        android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_favorite"

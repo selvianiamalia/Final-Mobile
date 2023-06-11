@@ -1,4 +1,4 @@
-package com.example.h071211003_finalproject;
+package com.example.h071211003_finalproject.API;
 
 import com.example.h071211003_finalproject.Models.Movies;
 import com.google.gson.annotations.SerializedName;

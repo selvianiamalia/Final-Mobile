@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.example.h071211003_finalproject.API.APIConfig;
 import com.example.h071211003_finalproject.Adapter.AdapterMovies;
@@ -25,6 +26,7 @@ import retrofit2.Response;
 public class MoviesFragment extends Fragment {
     private RecyclerView rv_movies;
     private AdapterMovies adapter_movies;
+    private ProgressBar progressBar;
 
 
     @Override
@@ -44,8 +46,10 @@ public class MoviesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rv_movies = view.findViewById(R.id.rv_movies);
+        progressBar = view.findViewById(R.id.progressBar2);
         rv_movies.setHasFixedSize(true);
         adapter_movies = new AdapterMovies();
+        progressBar.setVisibility(View.VISIBLE);
         APIConfig.getApiService().getMovies(APIConfig.getApiKey()).enqueue(new Callback<MoviesResponse>() {
             @Override
             public void onResponse(@NonNull Call<MoviesResponse> call, @NonNull Response<MoviesResponse> response) {
@@ -53,6 +57,7 @@ public class MoviesFragment extends Fragment {
                     adapter_movies.addMovies(response.body().getMovies());
                     rv_movies.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                     rv_movies.setAdapter(adapter_movies);
+                    progressBar.setVisibility(View.GONE);
                     Log.d("movies", response.body().toString());
                 }
             }
